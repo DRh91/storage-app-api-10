@@ -1,0 +1,191 @@
+{
+  "Unsortiert $998": {},
+  "Zusatzfelder $999": {},
+  "Aufstrich $3157": {
+    "Marmelade $3431": {
+      "Erdbeer $7439": {},
+      "Aprikose $5026": {}
+    },
+    "Erdnussbutter $0499": {},
+    "Honig $8595": {},
+    "Nutella & Co. $2005": {},
+    "Gemüseaufstrich $0911": {}
+  },
+  "Backzutaten $8078": {
+    "Zucker $7441": {
+      "Raffinierter Zucker $7230": {},
+      "Puderzucker $7104": {},
+      "Rohrohrzucker $8740": {},
+      "Gelierzucker $9544": {},
+      "Vanillezucker $4916": {}
+    },
+    "Mehl $5852": {
+      "Weizenmehl $2860": {},
+      "Dinkelmehl $9822": {},
+      "Sonstiges Mehl $9498": {}
+    },
+    "Klassische Backzutaten $8250": {
+      "Hefe $2410": {},
+      "Sahnesteif $3080": {},
+      "Backkakao $1976": {},
+      "Backpulver $6384": {},
+      "Backoblaten $4251": {},
+      "Kuvertüre $6817": {}
+    },
+    "Dessertsoßen & Pudding $921": {
+      "Vanillesoße $741": {},
+      "Schokosoße $8996": {},
+      "Vanillepudding $7555": {},
+      "Schokopudding $7235": {}
+    }
+  },
+  "Brot & Backwaren $8443": {
+    "(Dosen-)Brot $2029": {},
+    "Brötchen $5991": {},
+    "Hamburger $7550": {},
+    "Wraps $0752": {},
+    "Toast $0401": {},
+    "Knäckebrot $6789": {},
+    "Zwieback & Co. $9671": {},
+    "Reis- & Maiswaffeln $4955": {}
+  },
+  "Cerealien & Müsli $1661": {
+    "Cornflakes $2650": {},
+    "Müsli $4485": {
+      "Knuspermüsli $1480": {},
+      "Schokomüsli $7635": {},
+      "Fruchtmüsli $8645": {}
+    },
+    "Haferflocken $2535": {}
+  },
+  "Getränke $8663": {
+    "Saft $7217": {
+      "Apfelsaft $5950": {},
+      "Orangensaft $3395": {},
+      "Traubensaft $7311": {},
+      "Sonstiges $6696": {}
+    },
+    "Softdrinks $9288": {
+      "Cola $185": {},
+      "Sprite $4362": {},
+      "Sonstige $4193": {}
+    },
+    "Wasser $7944": {
+      "Stilles Wasser $0975": {},
+      "Sprudelwasser $0807": {}
+    },
+    "Bier & Mischgetränke $1507": {
+      "Bier $344": {},
+      "Alkoholfreies Bier $067": {},
+      "Vitamalz & Co. $855": {}
+    }
+  },
+  "Hülsenfrüchte & Getreide $8180": {
+    "Linsen $6638": {},
+    "Kichererbsen $6874": {},
+    "Hirse $300": {},
+    "Leinsamen $1044": {}
+  },
+  "Kaffee, Tee & Kakao $3046": {
+    "Kaffee $6422": {},
+    "Tee $9034":  {
+      "Chai $0488": {},
+      "Ingwer $0485": {},
+      "FAK $1503": {},
+      "Roibusch $4850": {},
+      "Kamille $2811": {},
+      "Pfefferminz $5800": {},
+      "Kräuter $5234 & Früchte": {},
+      "Sonstiges $5534": {}
+    },
+    "Kakao $0": {}
+  },
+  "Kochzutaten & Gewürze $6103": {
+    "Paniermehl $5061": {},
+    "Brühe $4583": {},
+    "Gewürze $6083": {},
+    "Currypaste $4962": {},
+    "Sojasoße $0152": {}
+  },
+  "Konserviertes & Fertiggerichte $2802": {
+    "Gemüsekonserven $237": {
+      "Mais $8742": {},
+      "Bohnen $7587": {}
+    },
+    "Obstkonserven $3992": {},
+    "Fischkonservern $4946": {},
+    "Konservengerichte $4266": {
+      "Ravioli $7915": {},
+      "Hier noch mehr $7914": {}
+    },
+    "Fertiggerichte $3888": {
+      "Burgerpulver $7966": {},
+      "Vleisch $6926": {}
+    },
+    "Tofu $5578":{}
+  },
+  "Milch(ersatz)produkte $8545": {
+    "Milch $9360": {},
+    "Sahne $052": {
+      "Vegan $8981": {},
+      "H-Sahne $5287": {}
+    },
+    "Dinkeldrink $6996": {},
+    "Haferdrink $3201": {},
+    "Vanilledrink $933": {}
+  },
+  "Nudeln & Reis $3050": {
+    "Nudeln $9367": {
+      "Spaghetti $0091": {},
+      "Vollkorn $3117": {},
+      "Weizen $0504": {},
+      "Lasagneplatten o.ä. $4248": {},
+      "Tortellini $9751": {},
+      "Gnocchi $2774": {}
+    },
+    "Reis $2572": {
+      "Langkornreis $3358": {},
+      "Rundkornreis $899": {}
+    }
+  },
+  "Nudelsoßen & Co. $1133": {
+    "Pastasoßen $0368": {
+      "Rot $7711": {},
+      "Gelb $0240": {}
+    },
+    "Soße Hollondaise $5918": {},
+    "Pesto $7648": {
+      "Rotes Pesto $9480": {},
+      "Grünes Pesto $3903": {}
+    },
+    "Tüten $7967": {}
+  },
+  "Öl, Ketchup & Mayo $2462": {
+    "Öl $2439": {
+      "Sonnenblumenöl $8855": {},
+      "Olivenöl $3456": {}
+    },
+    "Essig $307": {
+      "Balsamico $59": {}
+    },
+    "Ketchup $3619": {},
+    "Mayo $9627": {},
+    "Senf $5255": {}
+  },
+  "Snacks & Süßigkeiten $6708": {
+    "Süßes $9029": {},
+    "Salziges $3451": {
+      "Tortillachips $5048": {},
+      "Chips $5697": {},
+      "Salzstangen $6929": {},
+      "Käsestangen $7031": {}
+    },
+    "Kekse $1188": {},
+    "Müsliriegel $6924": {},
+    "Nüsse & Co. $5538": {
+      "Studentenfutter & Co $2443": {},
+      "Walnüsse $2247": {},
+      "Trockenobst $7468": {}
+    }
+  }
+}
