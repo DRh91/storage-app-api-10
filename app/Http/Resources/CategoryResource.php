@@ -20,7 +20,7 @@ class CategoryResource extends JsonResource
         $array = parent::toArray($request);
         $array['created_at'] = $createdAt;
         $array['updated_at'] = $updatedAt;
-        $children = DB::table('categories')->where('parentId', "=", $array['id'])->get();
+        $children = DB::table('categories')->where('parent_id', "=", $array['id'])->get();
         $childrenIds = [];
         foreach ($children as $child) {
             $childrenIds[] = $child->id;

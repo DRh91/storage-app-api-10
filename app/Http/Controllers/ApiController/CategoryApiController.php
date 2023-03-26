@@ -23,7 +23,7 @@ class CategoryApiController extends BaseApiController
 
     private function insertCategory(string $categoryName, array $children, ?int $parentId): void
     {
-        $categoryId = DB::table('categories')->where('name', '=', $categoryName)->get()[0]->id;
+        $categoryId = DB::table('categories')->where('name', '=', $categoryName)->get()[0]?->id ?? null;
         if (isset($categoryId)) {
             DB::table('categories')->where('id', '=', $categoryId)->update(['name' => $categoryName, 'parent_id' => $parentId]);
         }
