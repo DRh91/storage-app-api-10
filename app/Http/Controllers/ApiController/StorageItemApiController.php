@@ -23,21 +23,11 @@ class StorageItemApiController extends BaseApiController
         );
     }
 
-
-    protected function validateEntity(Request $request)
-    {
-        return $request->validate(
-            [
-//                'idBarcodeInfo' => 'required',
-            ]
-        );
-    }
-
     public function syncStore(Request $request): ResourceCollection
     {
         $amountToCreate = $request->input('amount') ?? 0;
         $idBarcodeInfo = BarcodeInfo::where('barcode', '=', $request->get("barcode"))->first()->id;
-        $request->query->set("idBarcodeInfo", $idBarcodeInfo);
+        $request->query->set("id_barcode_info", $idBarcodeInfo);
         $entities = [];
         for ($i = 0; $i < $amountToCreate; $i++) {
             $entity = $this->modelClass::create($request->all());
@@ -50,10 +40,20 @@ class StorageItemApiController extends BaseApiController
     public function store(Request $request): ResourceCollection
     {
         $id = $request->get("id") ?? null;
-        $idBarcodeInfo = BarcodeInfo::where('barcode', '=', $request->get("barcode"))->first()->id;
-        $request->query->set("idBarcodeInfo", $idBarcodeInfo);
-        $request->request->remove('barcode');
+
+        # update
         $requestHasId = $id !== null;
+        if ($requestHasId) {
+            $this->validateEntity($request);
+            return $this->update($id, $request);
+        }
+
+        # create
+        $idBarcodeInfo = BarcodeInfo::where('barcode', '=', $request->get("barcode"))->first()->id;
+        $request->query->set("id_barcode_info", $idBarcodeInfo);
+        $request->request->remove('barcode');
+        $this->validateEntity($request);
+        $entity = $this->modelClass::create($request->all());
 
         # store best before date duration
         $bestBeforeDate = $request->get("bestBeforeDate");
@@ -64,19 +64,13 @@ class StorageItemApiController extends BaseApiController
             $diffInDays = round(($bestBeforeDate - $now) / 86400);
             if ($diffInDays > 0) {
                 DB::table('barcode_info_best_before_date_durations')->insert(
-                    array('idBarcodeInfo' => $idBarcodeInfo, 'bestBeforeDateDurationInDays' => $diffInDays)
+                    array('id_barcode_info' => $idBarcodeInfo, 'best_before_date_duration_in_days' => $diffInDays)
                 );
             }
         }
 
-        if ($requestHasId) {
-            $this->validateEntity($request);
-            return $this->update($id, $request);
-        } else {
-            $this->validateEntity($request);
-            $entity = $this->modelClass::create($request->all());
-            return new $this->entityResourceCollectionClass([$entity]);
-        }
+        # return resource
+        return new $this->entityResourceCollectionClass([$entity]);
     }
 
 
@@ -84,10 +78,14 @@ class StorageItemApiController extends BaseApiController
     {
         /** @var StorageItem $entity */
         $entity = $this->modelClass::where('id', '=', $entityId)->first();
-        $idBarcodeInfo = $entity->idBarcodeInfo;
+        if ($entity === null) {
+            return new ResourceCollection([]);
+        }
+
+        $idBarcodeInfo = $entity->id_barcode_info;
 
         DB::table('removed_items')->insert(
-            array('idBarcodeInfo' => $idBarcodeInfo, 'idStorageItem' => $entityId)
+            array('id_barcode_info' => $idBarcodeInfo, 'id_storage_item' => $entityId)
         );
 
         return parent::destroy($entityId);
@@ -102,7 +100,7 @@ class StorageItemApiController extends BaseApiController
             return new $this->entityResourceCollectionClass([]);
         }
         $idBarcodeInfo = $barcodeInfo->id;
-        $storageItems = $this->modelClass::where('idBarcodeInfo', '=', $idBarcodeInfo)->get();
+        $storageItems = $this->modelClass::where('id_barcode_info', '=', $idBarcodeInfo)->get();
         return new $this->entityResourceCollectionClass($storageItems);
     }
 
@@ -110,15 +108,15 @@ class StorageItemApiController extends BaseApiController
     {
         /**
          * The parent provides the latest change of a CHANGED storage item.
-         * If a storage item was removed the parent does not provided the _actual_ last change of this table.
-         * That's why we have to use the removed item last change - if an item was deleted the actual lastChange must be read from the
+         * If a storage item was _removed_ the parent does not provide the _actual_ last change of this table.
+         * That's why we have to use the removed item last change: If an item was deleted the actual lastChange must be read from the
          * removed items table.
          */
 
-        $storageItemChange = parent::lastChange($request)['lastChange'];
-        $removedItemChange = parent::lastChange($request, 'removed_items')['lastChange'];
+        $storageItemChange = parent::lastChange($request)['last_change'];
+        $removedItemChange = parent::lastChange($request, 'removed_items')['last_change'];
         $latestChange = $storageItemChange > $removedItemChange ? $storageItemChange : $removedItemChange;
-        return ['lastChange' => $latestChange];
+        return ['last_change' => $latestChange];
     }
 
 

@@ -8,20 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Class CustomShoppingItem
  *
- * @property int $shoppingQuantity
- * @property int $shoppingPriority
+ * @property int $shopping_quantity
+ * @property int $shopping_priority
  * @property string $name
  * @package App\Models
  */
 class CustomShoppingItem extends Model
 {
     protected $fillable = [
-        'shoppingQuantity', 'shoppingPriority', 'name'
+        'shopping_quantity', 'shopping_priority', 'name'
     ];
 
     protected $casts = [
-        'shoppingQuantity' => 'integer',
-        'shoppingPriority' => 'integer'
+        'shopping_quantity' => 'integer'
     ];
 
 }

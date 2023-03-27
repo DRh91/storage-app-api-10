@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
  * Class StorageItem
  *
  * @property int $id
- * @property DateTime $bestBeforeDate
+ * @property DateTime $best_before_date
  * @property string $barcode
  * @property int $state
  *
@@ -19,10 +19,10 @@ use Illuminate\Database\Eloquent\Model;
 class StorageItem extends Model
 {
     protected $fillable = [
-        'bestBeforeDate', 'idBarcodeInfo', 'state'
+        'best_before_date', 'id_barcode_info', 'state'
     ];
 
     public function barcodeInfo(){
-        return $this->belongsTo(BarcodeInfo::class, 'idBarcodeInfo');
+        return $this->belongsTo(BarcodeInfo::class, 'id_barcode_info');
     }
 }

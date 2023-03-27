@@ -3,13 +3,12 @@
 namespace App\Http\Controllers\ApiController;
 
 use App\Http\Controllers\Controller;
-use DateTime;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Support\Facades\DB;
+use InvalidArgumentException;
 
 abstract class BaseApiController extends Controller
 {
@@ -86,6 +85,10 @@ abstract class BaseApiController extends Controller
         $requestHasId = $id !== null;
         if ($requestHasId) {
             $this->validateEntity($request);
+            $entity = $this->modelClass::where('id', '=', $id)->first() ?? null;
+            if ($entity === null) {
+                throw new InvalidArgumentException('Entity with id ' . $id . ' could not be found');
+            }
             return $this->update($id, $request);
         } else {
             $this->validateEntity($request);
@@ -127,7 +130,7 @@ abstract class BaseApiController extends Controller
         $lastCreate = DB::table($table ?? $this->tableName)->max('created_at');
         $lastUpdate = DB::table($table ?? $this->tableName)->max('updated_at');
         $latestChange = $lastCreate > $lastUpdate ? $lastCreate : $lastUpdate;
-        return ['lastChange' => $latestChange];
+        return ['last_change' => $latestChange];
     }
 
     public function count(Request $request)
@@ -135,5 +138,8 @@ abstract class BaseApiController extends Controller
         return ['count' => DB::table($this->tableName)->count('id')];
     }
 
-    protected abstract function validateEntity(Request $request);
+    protected function validateEntity(Request $request)
+    {
+        return $request->validate([]);
+    }
 }

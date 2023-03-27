@@ -4,9 +4,9 @@ namespace App\Http\Controllers\ApiController;
 
 use App\Http\Resources\BarcodeInfoResource;
 use App\Http\Resources\BarcodeInfoResourceCollection;
-use App\Models\BarcodeInfo;
-use DateTime;
 use Illuminate\Http\Request;
+use App\Models\BarcodeInfo;
+use Illuminate\Http\Resources\Json\JsonResource;
 
 class BarcodeInfoApiController extends BaseApiController
 {
@@ -36,6 +36,9 @@ class BarcodeInfoApiController extends BaseApiController
         $barcode = $request->get('barcode') ?? null;
         $barcodeInfoClass = BarcodeInfo::class;
         $barcodeInfo = $barcodeInfoClass::where('barcode', '=', $barcode)->first();
+        if ($barcodeInfo === null) {
+            return new JsonResource([]);
+        }
         return new $this->entityResourceCollectionClass([$barcodeInfo]);
     }
 }

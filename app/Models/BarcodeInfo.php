@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -12,12 +11,13 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id
  * @property string $name
  * @property string $barcode
- * @property boolean $isCustom
+ * @property boolean $is_custom
  * @property string $brand
- * @property string $imageUrl
+ * @property string $image_url
  * @property string $keywords
- * @property int $idCategory
- * @property int $unitQuantity
+ * @property int $id_category
+ * @property int $unit_quantity
+ * @property int $unit_quantity_drained
  * @property int $shelf
  * @property array $ratings
  * @property string $unit
@@ -27,13 +27,13 @@ use Illuminate\Database\Eloquent\Model;
 class BarcodeInfo extends Model
 {
     protected $fillable = [
-        'barcode', 'isCustom', 'name', 'brand', 'imageUrl', 'keywords', 'idCategory', 'unitQuantity','unitQuantityDrained', 'unit', 'ratings', 'shelf'
+        'barcode', 'is_custom', 'name', 'brand', 'image_url', 'keywords', 'id_category', 'unit_quantity','unit_quantity_drained', 'unit', 'ratings', 'shelf'
     ];
 
     protected $casts = [
-        'shoppingQuantity' => 'integer',
-        'shoppingPriority' => 'integer',
-        'unitQuantity' => 'integer',
+        'shopping_quantity' => 'integer',
+        'shopping_priority' => 'integer',
+        'unit_quantity' => 'integer',
         'shelf' => 'integer',
         'ratings' => 'array'
     ];
