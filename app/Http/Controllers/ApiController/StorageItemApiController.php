@@ -40,6 +40,9 @@ class StorageItemApiController extends BaseApiController
     public function store(Request $request): ResourceCollection
     {
         $id = $request->get("id") ?? null;
+        $idBarcodeInfo = BarcodeInfo::where('barcode', '=', $request->get("barcode"))->first()->id;
+        $request->query->set("id_barcode_info", $idBarcodeInfo);
+        $request->request->remove('barcode');
 
         # update
         $requestHasId = $id !== null;
@@ -49,9 +52,6 @@ class StorageItemApiController extends BaseApiController
         }
 
         # create
-        $idBarcodeInfo = BarcodeInfo::where('barcode', '=', $request->get("barcode"))->first()->id;
-        $request->query->set("id_barcode_info", $idBarcodeInfo);
-        $request->request->remove('barcode');
         $this->validateEntity($request);
         $entity = $this->modelClass::create($request->all());
 

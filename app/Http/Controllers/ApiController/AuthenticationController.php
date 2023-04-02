@@ -26,6 +26,6 @@ class AuthenticationController extends Controller
             throw ValidationException::withMessages(['email' => ['The provided credentials are incorrect.']]);
         }
 
-        return $user->createToken($request->name, ['*'],)->plainTextToken;
+        return ["token" => $user->createToken($request->name, ['*'],)->plainTextToken];
     }
 }
