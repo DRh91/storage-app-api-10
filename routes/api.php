@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('/auth/token', [AuthenticationController::class, 'generateToken']);
 
 # exceptions
-Route::post('/upload/exception', [ExceptionUploadController::class, 'upload'])->middleware(['auth:sanctum']);
+Route::post('/upload/exception', [ExceptionUploadController::class, 'upload']);
 
 # images
 Route::post('/upload/image', [ImageUploadController::class, 'upload'])->middleware(['auth:sanctum']);

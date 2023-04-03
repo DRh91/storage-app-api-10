@@ -20,6 +20,7 @@ return new class extends Migration
             $table->foreign('parent_id')->references('id')->on('categories')->onDelete('RESTRICT');
 
             $table->integer('shopping_quantity')->nullable(false)->default(0);
+            $table->integer('target_item_count')->nullable(false)->default(0);
             $table->dateTime('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->dateTime('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         });
